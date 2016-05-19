@@ -1,0 +1,344 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Stop Boolean Me</title><description>(a blog about javascript)
+No Cyber Boolean Allowed.</description><link>http://localhost:2368/</link><generator>Ghost 0.7</generator><lastBuildDate>Thu, 19 May 2016 18:56:37 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Creating, prototyping, Reflect and Extend Objects</title><description>&lt;p&gt;new creates an object on the spot when you call it &lt;br&gt;
+new is an operator!  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function Person(firstname, lastname){  
+console.log(this) //--&amp;gt; points to the new object"  
+this.firstname = firstname;  
+this.lastname = lastname;  
+}
+
+var john = new Person('John', "Doe");  
+var jane = new Person('Jane', 'Doe');  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;when you instantiated&lt;/p&gt;</description><link>http://localhost:2368/creating-prototyping-reflect-and-extend-objects/</link><guid isPermaLink="false">6cd9efb3-9f30-44db-9a13-dd7caf0a15ff</guid><dc:creator>Eric So</dc:creator><pubDate>Thu, 19 May 2016 18:48:38 GMT</pubDate><content:encoded>&lt;p&gt;new creates an object on the spot when you call it &lt;br&gt;
+new is an operator!  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function Person(firstname, lastname){  
+console.log(this) //--&amp;gt; points to the new object"  
+this.firstname = firstname;  
+this.lastname = lastname;  
+}
+
+var john = new Person('John', "Doe");  
+var jane = new Person('Jane', 'Doe');  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;when you instantiated a person like this, "new" creates an object.&lt;/p&gt;
+
+&lt;p&gt;all the "this" references inside the Person function reference the "new" object&lt;/p&gt;
+
+&lt;p&gt;constructing objects using functions. &lt;/p&gt;
+
+&lt;p&gt;a Function Constructor - a normal function that is used to construct objects&lt;/p&gt;
+
+&lt;p&gt;when you put a new keyword in front of a function constructor the this keywords point to the new empty object and that object is pointed at automatically&lt;/p&gt;
+
+&lt;p&gt;======================================================
+how to set a prototype  &lt;/p&gt;
+
+&lt;h1 id="codeiscontinuingfromlastsection"&gt;code is continuing from last section  &lt;/h1&gt;
+
+&lt;p&gt;a property that all functions get &lt;/p&gt;
+
+&lt;p&gt;javascript functions are objects and have many properties&lt;/p&gt;
+
+&lt;p&gt;every function has a prototype property, it starts its life off as an empty object. &lt;/p&gt;
+
+&lt;p&gt;//this prototype property in the function will be added to the prototype of the object that is instantiated using the new keyword!!!&lt;/p&gt;
+
+&lt;p&gt;Person.prototype.getFullName = function(){ &lt;br&gt;
+return this.firstname + ' ' + this.lastname; &lt;br&gt;
+}&lt;/p&gt;
+
+&lt;p&gt;why don't you add getFullName into this.getfullName&lt;/p&gt;
+
+&lt;p&gt;that would mean each object gets its own getFullName method. if you hold the method on the prototype then there would only be ONE copy since they all point to one prototype object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var person = {  
+what: "what"  
+}
+var jon = {  
+FN: "jon",  
+LN: "doe",  
+}
+jon.__proto__ = person  
+for (var prop in jon) {  
+  console.log(jon[prop])
+}
+//will log "jon", "doe", "what" !!! it will go up prototype chain
+
+
+for (var prop in jon) {  
+  (if jon.hasOwnProperty(prop)
+ console.log(jon[prop])
+}
+
+var jane = {  
+  address: '111 Main St',
+  getFormalFullName: function(){
+  return this.FN + this.LN
+}
+
+var jim = {  
+  getFirstName: function(){
+return this.FN  
+}
+}
+
+_.extend(jon, jane, jim)
+
+//this will add add all of jane and jim's properties to jons object
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Advanced SQL Notes</title><description>&lt;p&gt;View - made from a query to the main table, making a table. &lt;/p&gt;
+
+&lt;p&gt;EXAMPLE OF MAKING A VIEW~&lt;del&gt;  &lt;/del&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE VIEW NorthAmericanView  
+AS  
+SELECT [cities], [states], [countries]  
+FROM addresses A INNER JOIN randomPlaces B  
+WHERE A.id LIKE B.addresses-id
+
+//now you can select all from this view and itll give&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/advanced-sql-notes/</link><guid isPermaLink="false">a7abac6c-b421-4c11-8c09-ee0b62ec5bdf</guid><dc:creator>Eric So</dc:creator><pubDate>Tue, 17 May 2016 22:41:46 GMT</pubDate><content:encoded>&lt;p&gt;View - made from a query to the main table, making a table. &lt;/p&gt;
+
+&lt;p&gt;EXAMPLE OF MAKING A VIEW~&lt;del&gt;  &lt;/del&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE VIEW NorthAmericanView  
+AS  
+SELECT [cities], [states], [countries]  
+FROM addresses A INNER JOIN randomPlaces B  
+WHERE A.id LIKE B.addresses-id
+
+//now you can select all from this view and itll give you the cities, states and countries in the View
+
+SELECT * FROM NorthAmericanView  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;EXAMPLE OF A TRIGGER~  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT * FROM [HumanResources].[Shift]
+
+CREATE TRIGGER Demo_Trigger  
+ON [HumanResources].[Shift]  
+AFTER INSERT/UPDATE/DELETE  
+AS  
+BEGIN  
+PRINT 'INSERT IS NOT ALLOWED. YOU NEED APPROVAL'  
+ROLLBACK TRANSACTION  
+END  
+GO
+
+--TEST THE TRIGGER
+
+INSERT INTO [HumanResources].[Shift]  
+(
+[Name],
+[StartTime],
+[EndTime],
+[ModifiedDate])
+VALUES  
+('RAKESH2',
+'07:00:00.000000',  
+'08:00:00:000000',  
+getDate()  
+)
+
+---DATABASE LEVEL TRIGGER----
+
+CREATE TRIGGER DEMO DBTRIGGER  
+ON DATABASE  
+AFTER CREATE_TABLE  
+AS  
+BEGIN  
+PRINT 'CREATION OF NEW TABLES NOT ALLOWED'  
+ROLLBACK TRANSACTION  
+END  
+GO  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Computed Columns - they are computed based on the values of other columns&lt;/p&gt;
+
+&lt;p&gt;Employee Table&lt;/p&gt;
+
+&lt;p&gt;columns~ &lt;br&gt;
+First Name | Last Name | ID | Address&lt;/p&gt;
+
+&lt;p&gt;"You want to make a full name column" &amp;lt;-- combination of FN + LN&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DESIGNING A TABLE
+
+COLUMN NAMES | DATA TYPE | Allow Null  
+FN  
+LN  
+FULLNAME
+
+
+SET FULL NAME AS A COMPUTED COLUMN, YOU CAN ADD FN AND LN TOGETHER!!!  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Stored Procedures &lt;br&gt;
+-storing your queries
+parameterized stored procedures &lt;br&gt;
+-adding variables that you can change into your query as well&lt;/p&gt;
+
+&lt;p&gt;shopping &lt;br&gt;
+  shoes
+    add to cart
+Rakesh's Cart -- productID -- productName -- Qty -- Price&lt;/p&gt;
+
+&lt;p&gt;CREATE TABLE MYDEMOTABLE(Col1 varchar(10))&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id="storedprocedures"&gt;---STORED PROCEDURES&lt;/h2&gt;
+
+&lt;p&gt;CREATE PROCEDURE MyTestProc &lt;br&gt;
+AS &lt;br&gt;
+SET NOCOUNT ON &lt;br&gt;
+SELECT * FROM [HumanResources][Shift]&lt;/p&gt;
+
+&lt;p&gt;EXECUTE MyTestProc&lt;/p&gt;
+
+&lt;p&gt;CREATE PROCEDURE MyTestProc2 &lt;br&gt;
+AS &lt;br&gt;
+SET NOCOUNT OFF  //this shows how many rows are effected &lt;br&gt;
+SELECT * FROM [HumanResources][Shift]&lt;/p&gt;
+
+&lt;p&gt;EXECUTE MyTestProc2&lt;/p&gt;
+
+&lt;p&gt;DROP PROC MyTestProc &lt;br&gt;
+DROP PROC MyTestProc2 &lt;br&gt;
+ {
+CREATE PROCEDURE MyFirstParamProc &lt;br&gt;
+@Param&lt;em&gt;name VARCHAR(50)
+AS &lt;br&gt;
+SET NOCOUNT ON &lt;br&gt;
+SELECT * FROM [HumanResources].[Shift] &lt;br&gt;
+WHERE Name = @Param&lt;/em&gt;Name&lt;/p&gt;
+
+&lt;p&gt;EXEC MyFirstParamProcedure @Param_Name = "Day &lt;br&gt;
+EXEC MyFirstParamProcedure 'Day' &lt;br&gt;
+EXEC MyFirstParamProcedure&lt;/p&gt;
+
+&lt;p&gt;DROP PROC MyFirstParamProcedure&lt;/p&gt;
+
+&lt;p&gt;CREATE PROCEDURE MyFirstParamProc &lt;br&gt;
+@Param&lt;em&gt;name VARCHAR(50) = "Evening"   //sets default value if there is non passed in
+AS &lt;br&gt;
+SET NOCOUNT ON &lt;br&gt;
+SELECT * FROM [HumanResources].[Shift] &lt;br&gt;
+WHERE Name = @Param&lt;/em&gt;Name&lt;/p&gt;
+
+&lt;p&gt;EXEC MyFirstParamProcedure 'Day'&lt;/p&gt;
+
+&lt;p&gt;--OUTPUT Parameters
+CREATE PROC MyOutputSP &lt;br&gt;
+@TopShift varchar(50) OUTPUT
+AS &lt;br&gt;
+SET @TopShift = (SELECT TOP(1) ShiftID FROM [HumanResources].[Shift])&lt;/p&gt;
+
+&lt;p&gt;DECLARE @outputresult VARCHAR(50) &lt;br&gt;
+EXEC MyOutputSP @outputresult output &lt;br&gt;
+SELECt @outputresult&lt;/p&gt;
+
+&lt;p&gt;DROP PROC MyOutputSP&lt;/p&gt;
+
+&lt;p&gt;CREATE PROC myFirstReturningSP &lt;br&gt;
+AS &lt;br&gt;
+RETURN 12&lt;/p&gt;
+
+&lt;p&gt;DECLARE @returnvalue INT &lt;br&gt;
+EXEC @returnvalue = myFirstReturningSP &lt;br&gt;
+SELECT @returnvalue&lt;/p&gt;</content:encoded></item><item><title>Every possible way to write hello world with different accents</title><description>&lt;blockquote&gt;
+  &lt;p&gt;Ghost - hello world
+  * herro werld
+  * hewwo wuld
+  * heyyo woyld
+  * haillo wayrld&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;function hello(){
+
+console.log(1+2+3+4);
+
+}
+&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/every-possible-way-to-write-hello-world-with-different-accents/</link><guid isPermaLink="false">87ba42a2-c986-4413-92cf-be8f3b40626d</guid><dc:creator>Eric So</dc:creator><pubDate>Sun, 08 May 2016 04:16:36 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+  &lt;p&gt;Ghost - hello world
+  * herro werld
+  * hewwo wuld
+  * heyyo woyld
+  * haillo wayrld&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;function hello(){
+
+console.log(1+2+3+4);
+
+}
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Welcome to Ghost</title><description>&lt;p&gt;You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;code&gt;&amp;lt;your blog URL&amp;gt;/ghost/&lt;/code&gt;. When you arrive, you can select this post from a list&lt;/p&gt;</description><link>http://localhost:2368/welcome-to-ghost/</link><guid isPermaLink="false">e0d036ab-f0c5-4ab7-89e8-a17b67e4cbce</guid><category>Getting Started</category><dc:creator>Eric So</dc:creator><pubDate>Sat, 07 May 2016 18:51:30 GMT</pubDate><content:encoded>&lt;p&gt;You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;code&gt;&amp;lt;your blog URL&amp;gt;/ghost/&lt;/code&gt;. When you arrive, you can select this post from a list on the left and see a preview of it on the right. Click the little pencil icon at the top of the preview to edit this post and read the next section!&lt;/p&gt;
+
+&lt;h2 id="gettingstarted"&gt;Getting Started&lt;/h2&gt;
+
+&lt;p&gt;Ghost uses something called Markdown for writing. Essentially, it's a shorthand way to manage your post formatting as you write!&lt;/p&gt;
+
+&lt;p&gt;Writing in Markdown is really easy. In the left hand panel of Ghost, you simply write as you normally would. Where appropriate, you can use &lt;em&gt;shortcuts&lt;/em&gt; to &lt;strong&gt;style&lt;/strong&gt; your content. For example, a list:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Item number one&lt;/li&gt;
+&lt;li&gt;Item number two
+&lt;ul&gt;&lt;li&gt;A nested item&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;A final item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;or with numbers!&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Remember to buy some milk  &lt;/li&gt;
+&lt;li&gt;Drink the milk  &lt;/li&gt;
+&lt;li&gt;Tweet that I remembered to buy the milk, and drank it&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id="links"&gt;Links&lt;/h3&gt;
+
+&lt;p&gt;Want to link to a source? No problem. If you paste in a URL, like &lt;a href="http://ghost.org"&gt;http://ghost.org&lt;/a&gt; - it'll automatically be linked up. But if you want to customise your anchor text, you can do that too! Here's a link to &lt;a href="http://ghost.org"&gt;the Ghost website&lt;/a&gt;. Neat.&lt;/p&gt;
+
+&lt;h3 id="whataboutimages"&gt;What about Images?&lt;/h3&gt;
+
+&lt;p&gt;Images work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="https://ghost.org/images/ghost.png" alt="The Ghost Logo"&gt;&lt;/p&gt;
+
+&lt;p&gt;Not sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:&lt;/p&gt;
+
+&lt;h3 id="quoting"&gt;Quoting&lt;/h3&gt;
+
+&lt;p&gt;Sometimes a link isn't enough, you want to quote someone on what they've said. Perhaps you've started using a new blogging platform and feel the sudden urge to share their slogan? A quote might be just the way to do it!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Ghost - Just a blogging platform&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id="workingwithcode"&gt;Working with Code&lt;/h3&gt;
+
+&lt;p&gt;Got a streak of geek? We've got you covered there, too. You can write inline &lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; blocks really easily with back ticks. Want to show off something more comprehensive? 4 spaces of indentation gets you there.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.awesome-thing {
+    display: block;
+    width: 100%;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="readyforabreak"&gt;Ready for a Break?&lt;/h3&gt;
+
+&lt;p&gt;Throw 3 or more dashes down on any new line and you've got yourself a fancy new divider. Aw yeah.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="advancedusage"&gt;Advanced Usage&lt;/h3&gt;
+
+&lt;p&gt;There's one fantastic secret about Markdown. If you want, you can write plain old HTML and it'll still work! Very flexible.&lt;/p&gt;
+
+&lt;p&gt;&lt;input type="text" placeholder="I'm an input field!"&gt;&lt;/p&gt;
+
+&lt;p&gt;That should be enough to get you started. Have fun - and let us know what you think :)&lt;/p&gt;</content:encoded></item></channel></rss>

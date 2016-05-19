@@ -1,0 +1,314 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Advanced SQL Notes</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=db01c6071e">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="Stop Boolean Me">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Advanced SQL Notes">
+    <meta property="og:description" content="View - made from a query to the main table, making a table.  EXAMPLE OF MAKING A VIEW~   CREATE VIEW NorthAmericanView   AS   SELECT [cities], [states], [countries]   FROM addresses A INNER JOIN randomPlaces B   WHERE A.id LIKE B.addresses-id //now you can select all from this view and itll give">
+    <meta property="og:url" content="http://localhost:2368/advanced-sql-notes/">
+    <meta property="article:published_time" content="2016-05-17T22:41:46.230Z">
+    <meta property="article:modified_time" content="2016-05-17T22:41:46.229Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Advanced SQL Notes">
+    <meta name="twitter:description" content="View - made from a query to the main table, making a table.  EXAMPLE OF MAKING A VIEW~   CREATE VIEW NorthAmericanView   AS   SELECT [cities], [states], [countries]   FROM addresses A INNER JOIN randomPlaces B   WHERE A.id LIKE B.addresses-id //now you can select all from this view and itll give">
+    <meta name="twitter:url" content="http://localhost:2368/advanced-sql-notes/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Eric So">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Stop Boolean Me",
+    "author": {
+        "@type": "Person",
+        "name": "Eric So",
+        "image": "//www.gravatar.com/avatar/3fd14833cb554673c16bd12d596ca4be?s=250&d=mm&r=x",
+        "url": "http://localhost:2368/author/eric/",
+        "description": "graduated from UC Riverside, 23 years old, attending coding bootcamp."
+    },
+    "headline": "Advanced SQL Notes",
+    "url": "http://localhost:2368/advanced-sql-notes/",
+    "datePublished": "2016-05-17T22:41:46.230Z",
+    "dateModified": "2016-05-17T22:41:46.229Z",
+    "description": "View - made from a query to the main table, making a table.  EXAMPLE OF MAKING A VIEW~   CREATE VIEW NorthAmericanView   AS   SELECT [cities], [states], [countries]   FROM addresses A INNER JOIN randomPlaces B   WHERE A.id LIKE B.addresses-id //now you can select all from this view and itll give"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7">
+    <link rel="alternate" type="application/rss+xml" title="Stop Boolean Me" href="../rss/index.html">
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+            <li class="nav-home" role="presentation"><a href="../">Home</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="../rss/index.rss">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">Menu</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Advanced SQL Notes</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-05-17">17 May 2016</time> 
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>View - made from a query to the main table, making a table. </p>
+
+<p>EXAMPLE OF MAKING A VIEW~<del>  </del></p>
+
+<pre><code>CREATE VIEW NorthAmericanView  
+AS  
+SELECT [cities], [states], [countries]  
+FROM addresses A INNER JOIN randomPlaces B  
+WHERE A.id LIKE B.addresses-id
+
+//now you can select all from this view and itll give you the cities, states and countries in the View
+
+SELECT * FROM NorthAmericanView  
+</code></pre>
+
+<p>EXAMPLE OF A TRIGGER~  </p>
+
+<pre><code>SELECT * FROM [HumanResources].[Shift]
+
+CREATE TRIGGER Demo_Trigger  
+ON [HumanResources].[Shift]  
+AFTER INSERT/UPDATE/DELETE  
+AS  
+BEGIN  
+PRINT 'INSERT IS NOT ALLOWED. YOU NEED APPROVAL'  
+ROLLBACK TRANSACTION  
+END  
+GO
+
+--TEST THE TRIGGER
+
+INSERT INTO [HumanResources].[Shift]  
+(
+[Name],
+[StartTime],
+[EndTime],
+[ModifiedDate])
+VALUES  
+('RAKESH2',
+'07:00:00.000000',  
+'08:00:00:000000',  
+getDate()  
+)
+
+---DATABASE LEVEL TRIGGER----
+
+CREATE TRIGGER DEMO DBTRIGGER  
+ON DATABASE  
+AFTER CREATE_TABLE  
+AS  
+BEGIN  
+PRINT 'CREATION OF NEW TABLES NOT ALLOWED'  
+ROLLBACK TRANSACTION  
+END  
+GO  
+</code></pre>
+
+<p>Computed Columns - they are computed based on the values of other columns</p>
+
+<p>Employee Table</p>
+
+<p>columns~ <br>
+First Name | Last Name | ID | Address</p>
+
+<p>"You want to make a full name column" &lt;-- combination of FN + LN</p>
+
+<pre><code>DESIGNING A TABLE
+
+COLUMN NAMES | DATA TYPE | Allow Null  
+FN  
+LN  
+FULLNAME
+
+
+SET FULL NAME AS A COMPUTED COLUMN, YOU CAN ADD FN AND LN TOGETHER!!!  
+</code></pre>
+
+<p>Stored Procedures <br>
+-storing your queries
+parameterized stored procedures <br>
+-adding variables that you can change into your query as well</p>
+
+<p>shopping <br>
+  shoes
+    add to cart
+Rakesh's Cart -- productID -- productName -- Qty -- Price</p>
+
+<p>CREATE TABLE MYDEMOTABLE(Col1 varchar(10))</p>
+
+<hr>
+
+<h2 id="storedprocedures">---STORED PROCEDURES</h2>
+
+<p>CREATE PROCEDURE MyTestProc <br>
+AS <br>
+SET NOCOUNT ON <br>
+SELECT * FROM [HumanResources][Shift]</p>
+
+<p>EXECUTE MyTestProc</p>
+
+<p>CREATE PROCEDURE MyTestProc2 <br>
+AS <br>
+SET NOCOUNT OFF  //this shows how many rows are effected <br>
+SELECT * FROM [HumanResources][Shift]</p>
+
+<p>EXECUTE MyTestProc2</p>
+
+<p>DROP PROC MyTestProc <br>
+DROP PROC MyTestProc2 <br>
+ {
+CREATE PROCEDURE MyFirstParamProc <br>
+@Param<em>name VARCHAR(50)
+AS <br>
+SET NOCOUNT ON <br>
+SELECT * FROM [HumanResources].[Shift] <br>
+WHERE Name = @Param</em>Name</p>
+
+<p>EXEC MyFirstParamProcedure @Param_Name = "Day <br>
+EXEC MyFirstParamProcedure 'Day' <br>
+EXEC MyFirstParamProcedure</p>
+
+<p>DROP PROC MyFirstParamProcedure</p>
+
+<p>CREATE PROCEDURE MyFirstParamProc <br>
+@Param<em>name VARCHAR(50) = "Evening"   //sets default value if there is non passed in
+AS <br>
+SET NOCOUNT ON <br>
+SELECT * FROM [HumanResources].[Shift] <br>
+WHERE Name = @Param</em>Name</p>
+
+<p>EXEC MyFirstParamProcedure 'Day'</p>
+
+<p>--OUTPUT Parameters
+CREATE PROC MyOutputSP <br>
+@TopShift varchar(50) OUTPUT
+AS <br>
+SET @TopShift = (SELECT TOP(1) ShiftID FROM [HumanResources].[Shift])</p>
+
+<p>DECLARE @outputresult VARCHAR(50) <br>
+EXEC MyOutputSP @outputresult output <br>
+SELECt @outputresult</p>
+
+<p>DROP PROC MyOutputSP</p>
+
+<p>CREATE PROC myFirstReturningSP <br>
+AS <br>
+RETURN 12</p>
+
+<p>DECLARE @returnvalue INT <br>
+EXEC @returnvalue = myFirstReturningSP <br>
+SELECT @returnvalue</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/eric/" style="background-image: url(http://www.gravatar.com/avatar/3fd14833cb554673c16bd12d596ca4be?s&amp;)"><span class="hidden">Eric So's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/eric/">Eric So</a></h4>
+
+                    <p>graduated from UC Riverside, 23 years old, attending coding bootcamp.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rowland Heights , CA </span>
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Advanced%20SQL%20Notes&amp;url=http://localhost:2368/advanced-sql-notes/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/advanced-sql-notes/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/advanced-sql-notes/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="../creating-prototyping-reflect-and-extend-objects/">
+        <section class="post">
+            <h2>Creating, prototyping, Reflect and Extend Objects</h2>
+            <p>new creates an object on the spot when you call it  new is an operator!   function Person(firstname, lastname)…</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="../every-possible-way-to-write-hello-world-with-different-accents/">
+        <section class="post">
+            <h2>Every possible way to write hello world with different accents</h2>
+            <p>Ghost - hello world   * herro werld   * hewwo wuld   * heyyo woyld   * haillo wayrld function hello(){ console.log(1+2+3+…</p>
+        </section>
+    </a>
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../">Stop Boolean Me</a> © 2016</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    
+
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=db01c6071e"></script>
+    <script type="text/javascript" src="../assets/js/index.js?v=db01c6071e"></script>
+
+</body>
