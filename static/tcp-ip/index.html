@@ -1,9 +1,8 @@
-
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Built in function constructors</title>
+    <title>TCP/IP</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,20 +14,20 @@
 
     
 
-    <link rel="canonical" href="http://localhost:2368/built-in-function-constructors/">
+    <link rel="canonical" href="http://localhost:2368/tcp-ip/">
     <meta name="referrer" content="origin">
     
     <meta property="og:site_name" content="Stop Boolean Me">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Built in function constructors">
-    <meta property="og:description" content='TO PLAY WITH DATES or TIME, use MOMENTJS.com DO NOT USE BUILT IN JAVASCRIPT DATES  adding a method to a string prototype   String.prototype.isLengthGreaterThan = function(limit){     return this.length &amp;gt; limit; } console.log("John".isLengthGreaterThan(3));   trying to add to a number prototype   Number.prototype.isPositive = function(){   if('>
-    <meta property="og:url" content="http://localhost:2368/built-in-function-constructors/">
-    <meta property="article:published_time" content="2016-05-19T19:17:07.479Z">
-    <meta property="article:modified_time" content="2016-05-19T19:17:07.479Z">
+    <meta property="og:title" content="TCP/IP">
+    <meta property="og:description" content="protocol means a set of rules two sides agree on to use when communicating. Like two people from different countries choosing to speak english. Client server model:  client - asks for services  server - performs services client sends requests to server and receives a response in return. So how is">
+    <meta property="og:url" content="http://localhost:2368/tcp-ip/">
+    <meta property="article:published_time" content="2016-08-30T23:47:49.855Z">
+    <meta property="article:modified_time" content="2016-08-30T23:47:49.853Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Built in function constructors">
-    <meta name="twitter:description" content='TO PLAY WITH DATES or TIME, use MOMENTJS.com DO NOT USE BUILT IN JAVASCRIPT DATES  adding a method to a string prototype   String.prototype.isLengthGreaterThan = function(limit){     return this.length &amp;gt; limit; } console.log("John".isLengthGreaterThan(3));   trying to add to a number prototype   Number.prototype.isPositive = function(){   if('>
-    <meta name="twitter:url" content="http://localhost:2368/built-in-function-constructors/">
+    <meta name="twitter:title" content="TCP/IP">
+    <meta name="twitter:description" content="protocol means a set of rules two sides agree on to use when communicating. Like two people from different countries choosing to speak english. Client server model:  client - asks for services  server - performs services client sends requests to server and receives a response in return. So how is">
+    <meta name="twitter:url" content="http://localhost:2368/tcp-ip/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Eric So">
     
@@ -44,11 +43,11 @@
         "url": "http://localhost:2368/author/eric/",
         "description": "graduated from UC Riverside, 23 years old, attending coding bootcamp."
     },
-    "headline": "Built in function constructors",
-    "url": "http://localhost:2368/built-in-function-constructors/",
-    "datePublished": "2016-05-19T19:17:07.479Z",
-    "dateModified": "2016-05-19T19:17:07.479Z",
-    "description": "TO PLAY WITH DATES or TIME, use MOMENTJS.com DO NOT USE BUILT IN JAVASCRIPT DATES  adding a method to a string prototype   String.prototype.isLengthGreaterThan &#x3D; function(limit){     return this.length &amp;gt; limit; } console.log(&quot;John&quot;.isLengthGreaterThan(3));   trying to add to a number prototype   Number.prototype.isPositive &#x3D; function(){   if("
+    "headline": "TCP/IP",
+    "url": "http://localhost:2368/tcp-ip/",
+    "datePublished": "2016-08-30T23:47:49.855Z",
+    "dateModified": "2016-08-30T23:47:49.853Z",
+    "description": "protocol means a set of rules two sides agree on to use when communicating. Like two people from different countries choosing to speak english. Client server model:  client - asks for services  server - performs services client sends requests to server and receives a response in return. So how is"
 }
     </script>
 
@@ -71,63 +70,54 @@ No Cyber Boolean Allowed.</h2>    </header>
 
         <header>
         
-        <h1 class="post-title">Built in function constructors</h1>
-        <div class="post-meta"><time class="post-date" datetime="2016-05-19T12:17:07.47Z">...</time></div>
+        <h1 class="post-title">TCP/IP</h1>
+        <div class="post-meta"><time class="post-date" datetime="2016-08-30T16:47:49.85Z">...</time></div>
         </header>
 
         <section class="post-content">
-            <p>TO PLAY WITH DATES or TIME, use MOMENTJS.com</p>
+            <p>protocol means a set of rules two sides agree on to use when communicating. Like two people from different countries choosing to speak english.</p>
 
-<p>DO NOT USE BUILT IN JAVASCRIPT DATES <br>
-adding a method to a string prototype  </p>
+<p>Client server model: <br>
+client - asks for services <br>
+server - performs services</p>
 
-<pre><code>String.prototype.isLengthGreaterThan = function(limit){  
-  return this.length &gt; limit;
-}
+<p>client sends requests to server and receives a response in return.</p>
 
-console.log("John".isLengthGreaterThan(3));  
-</code></pre>
+<p>So how is the information actually being transferred??</p>
 
-<p>trying to add to a number prototype  </p>
+<p>When the browser and web server are connected. Each one receives an IP address. </p>
 
-<pre><code>Number.prototype.isPositive = function(){  
-if(this &gt; 0){  
-return true  
-} 
+<p>IP stands for internet protocol</p>
 
-return false  
-}
-var a = new Number(3) -&gt; makes an object with a number and adds a bunch of features. YOU SHOULD NOT MESS WITH CONSTRUCTORS OF PRIMITIVE TTYPES IT DOES NOT WORK OUT WELL.
+<p>The sequence of numbers identifies computers together. <br>
+When you make a connection, your server makes a socket, which is a line across which the information flows. </p>
 
-var a = 3 , b = new Number(3)
+<p>all protocols are about how information needs to be structured <br>
+HTTP(web) FTP(file) SMTP(mail) <br>
+they all go from computer to computer using IP. We need a protocol for how to send information not just how it's structured.</p>
 
-a == b ------&gt; true
+<p>TCP is HOW to send information. The act of separating the information into packets is called TCP</p>
 
-a === b -------&gt; false
+<p>IP is Where to send. </p>
 
-b is an object containing 3 as a value
+<p>HTTP/FTP is what you send, or how to strucutre it.</p>
 
-var arr = ['John', 'Jane', 'Jim'];
+<p>You can use node to send email server, file server or anything.</p>
 
-for(var prop in arr) {  
-console.log(prop,": ", arr[prop])  
-}
-</code></pre>
+<p>TCP looks a lot like a stream. Node treats the information coming down this pipeline as a stream.</p>
 
-<p>you can loop across an array like you would an object.</p>
-
-<p>but it is safer to just use a normal for loop because you can iterate through an arrays prototype if you add any methods to the prototype.</p>
+<p>Sockets, real time communication. We open and close sockets constantly online.</p>
         </section>
 
         <section class="share">
             <p class="info prompt">Share this post</p>
-            <a href="http://twitter.com/share?text=Built%20in%20function%20constructors&amp;url=http://localhost:2368/built-in-function-constructors/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a href="http://twitter.com/share?text=TCP/IP&amp;url=http://localhost:2368/tcp-ip/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-2x fa-fw fa-twitter"></i> <span class="hidden">Twitter</span>
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/built-in-function-constructors/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/tcp-ip/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                 <i class="fa fa-2x fa-fw fa-facebook-square"></i> <span class="hidden">Facebook</span>
             </a>
-            <a href="https://plus.google.com/share?url=http://localhost:2368/built-in-function-constructors/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+            <a href="https://plus.google.com/share?url=http://localhost:2368/tcp-ip/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                 <i class="fa fa-2x fa-fw fa-google-plus-square"></i> <span class="hidden">Google+</span>
             </a>
         </section>

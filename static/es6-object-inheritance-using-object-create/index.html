@@ -1,9 +1,8 @@
-
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Built in function constructors</title>
+    <title>ES6 Object Inheritance using Object.create</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,20 +14,20 @@
 
     
 
-    <link rel="canonical" href="http://localhost:2368/built-in-function-constructors/">
+    <link rel="canonical" href="http://localhost:2368/es6-object-inheritance-using-object-create/">
     <meta name="referrer" content="origin">
     
     <meta property="og:site_name" content="Stop Boolean Me">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Built in function constructors">
-    <meta property="og:description" content='TO PLAY WITH DATES or TIME, use MOMENTJS.com DO NOT USE BUILT IN JAVASCRIPT DATES  adding a method to a string prototype   String.prototype.isLengthGreaterThan = function(limit){     return this.length &amp;gt; limit; } console.log("John".isLengthGreaterThan(3));   trying to add to a number prototype   Number.prototype.isPositive = function(){   if('>
-    <meta property="og:url" content="http://localhost:2368/built-in-function-constructors/">
-    <meta property="article:published_time" content="2016-05-19T19:17:07.479Z">
-    <meta property="article:modified_time" content="2016-05-19T19:17:07.479Z">
+    <meta property="og:title" content="ES6 Object Inheritance using Object.create">
+    <meta property="og:description" content="var person {     firstname: 'Default',   lastname: 'Default',   greet: function(){       return 'Hi' + this.firstname;   } } var john = Object.create(person); john.firstname = 'John';   john.lastname = 'Doe';   ES6 and classes a javascript class class Person {    constructor(firstname, lastname){     this.firstname = firstname;     this.lastname = lastname; } greet () {    return 'Hi ' + firstname; } } var john = new Person('John',">
+    <meta property="og:url" content="http://localhost:2368/es6-object-inheritance-using-object-create/">
+    <meta property="article:published_time" content="2016-05-19T22:32:16.669Z">
+    <meta property="article:modified_time" content="2016-05-19T22:32:16.668Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Built in function constructors">
-    <meta name="twitter:description" content='TO PLAY WITH DATES or TIME, use MOMENTJS.com DO NOT USE BUILT IN JAVASCRIPT DATES  adding a method to a string prototype   String.prototype.isLengthGreaterThan = function(limit){     return this.length &amp;gt; limit; } console.log("John".isLengthGreaterThan(3));   trying to add to a number prototype   Number.prototype.isPositive = function(){   if('>
-    <meta name="twitter:url" content="http://localhost:2368/built-in-function-constructors/">
+    <meta name="twitter:title" content="ES6 Object Inheritance using Object.create">
+    <meta name="twitter:description" content="var person {     firstname: 'Default',   lastname: 'Default',   greet: function(){       return 'Hi' + this.firstname;   } } var john = Object.create(person); john.firstname = 'John';   john.lastname = 'Doe';   ES6 and classes a javascript class class Person {    constructor(firstname, lastname){     this.firstname = firstname;     this.lastname = lastname; } greet () {    return 'Hi ' + firstname; } } var john = new Person('John',">
+    <meta name="twitter:url" content="http://localhost:2368/es6-object-inheritance-using-object-create/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Eric So">
     
@@ -44,11 +43,11 @@
         "url": "http://localhost:2368/author/eric/",
         "description": "graduated from UC Riverside, 23 years old, attending coding bootcamp."
     },
-    "headline": "Built in function constructors",
-    "url": "http://localhost:2368/built-in-function-constructors/",
-    "datePublished": "2016-05-19T19:17:07.479Z",
-    "dateModified": "2016-05-19T19:17:07.479Z",
-    "description": "TO PLAY WITH DATES or TIME, use MOMENTJS.com DO NOT USE BUILT IN JAVASCRIPT DATES  adding a method to a string prototype   String.prototype.isLengthGreaterThan &#x3D; function(limit){     return this.length &amp;gt; limit; } console.log(&quot;John&quot;.isLengthGreaterThan(3));   trying to add to a number prototype   Number.prototype.isPositive &#x3D; function(){   if("
+    "headline": "ES6 Object Inheritance using Object.create",
+    "url": "http://localhost:2368/es6-object-inheritance-using-object-create/",
+    "datePublished": "2016-05-19T22:32:16.669Z",
+    "dateModified": "2016-05-19T22:32:16.668Z",
+    "description": "var person {     firstname: &#x27;Default&#x27;,   lastname: &#x27;Default&#x27;,   greet: function(){       return &#x27;Hi&#x27; + this.firstname;   } } var john &#x3D; Object.create(person); john.firstname &#x3D; &#x27;John&#x27;;   john.lastname &#x3D; &#x27;Doe&#x27;;   ES6 and classes a javascript class class Person {    constructor(firstname, lastname){     this.firstname &#x3D; firstname;     this.lastname &#x3D; lastname; } greet () {    return &#x27;Hi &#x27; + firstname; } } var john &#x3D; new Person(&#x27;John&#x27;,"
 }
     </script>
 
@@ -71,63 +70,52 @@ No Cyber Boolean Allowed.</h2>    </header>
 
         <header>
         
-        <h1 class="post-title">Built in function constructors</h1>
-        <div class="post-meta"><time class="post-date" datetime="2016-05-19T12:17:07.47Z">...</time></div>
+        <h1 class="post-title">ES6 Object Inheritance using Object.create</h1>
+        <div class="post-meta"><time class="post-date" datetime="2016-05-19T15:32:16.66Z">...</time></div>
         </header>
 
         <section class="post-content">
-            <p>TO PLAY WITH DATES or TIME, use MOMENTJS.com</p>
-
-<p>DO NOT USE BUILT IN JAVASCRIPT DATES <br>
-adding a method to a string prototype  </p>
-
-<pre><code>String.prototype.isLengthGreaterThan = function(limit){  
-  return this.length &gt; limit;
+            <pre><code>var person {  
+  firstname: 'Default',
+  lastname: 'Default',
+  greet: function(){
+      return 'Hi' + this.firstname;
+  }
 }
 
-console.log("John".isLengthGreaterThan(3));  
+var john = Object.create(person);
+
+john.firstname = 'John';  
+john.lastname = 'Doe';  
 </code></pre>
 
-<p>trying to add to a number prototype  </p>
+<p>ES6 and classes</p>
 
-<pre><code>Number.prototype.isPositive = function(){  
-if(this &gt; 0){  
-return true  
-} 
+<p>a javascript class</p>
 
-return false  
+<p>class Person { <br>
+  constructor(firstname, lastname){
+    this.firstname = firstname;
+    this.lastname = lastname;
 }
-var a = new Number(3) -&gt; makes an object with a number and adds a bunch of features. YOU SHOULD NOT MESS WITH CONSTRUCTORS OF PRIMITIVE TTYPES IT DOES NOT WORK OUT WELL.
-
-var a = 3 , b = new Number(3)
-
-a == b ------&gt; true
-
-a === b -------&gt; false
-
-b is an object containing 3 as a value
-
-var arr = ['John', 'Jane', 'Jim'];
-
-for(var prop in arr) {  
-console.log(prop,": ", arr[prop])  
+greet () { <br>
+  return 'Hi ' + firstname;
 }
-</code></pre>
+}</p>
 
-<p>you can loop across an array like you would an object.</p>
-
-<p>but it is safer to just use a normal for loop because you can iterate through an arrays prototype if you add any methods to the prototype.</p>
+<p>var john = new Person('John', 'Doe'); <br>
+//try this out! john will have the greet method and first name and last name properties!</p>
         </section>
 
         <section class="share">
             <p class="info prompt">Share this post</p>
-            <a href="http://twitter.com/share?text=Built%20in%20function%20constructors&amp;url=http://localhost:2368/built-in-function-constructors/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <a href="http://twitter.com/share?text=ES6%20Object%20Inheritance%20using%20Object.create&amp;url=http://localhost:2368/es6-object-inheritance-using-object-create/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-2x fa-fw fa-twitter"></i> <span class="hidden">Twitter</span>
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/built-in-function-constructors/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/es6-object-inheritance-using-object-create/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                 <i class="fa fa-2x fa-fw fa-facebook-square"></i> <span class="hidden">Facebook</span>
             </a>
-            <a href="https://plus.google.com/share?url=http://localhost:2368/built-in-function-constructors/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+            <a href="https://plus.google.com/share?url=http://localhost:2368/es6-object-inheritance-using-object-create/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                 <i class="fa fa-2x fa-fw fa-google-plus-square"></i> <span class="hidden">Google+</span>
             </a>
         </section>
