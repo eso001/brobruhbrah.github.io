@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bro Bruh Brah Support</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #1f2933;
+      background: #f4f7fb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, main, footer {
+      width: min(90%, 900px);
+      margin: 0 auto;
+    }
+    header {
+      padding: 3rem 0 1rem;
+      text-align: center;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      color: #0b7285;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover,
+    nav a:focus {
+      text-decoration: underline;
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      color: #0b7285;
+    }
+    main {
+      flex: 1 0 auto;
+      padding-bottom: 2rem;
+    }
+    section {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(15, 76, 129, 0.08);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      font-size: clamp(1.4rem, 4vw, 1.75rem);
+      margin-bottom: 1rem;
+      color: #0f4c81;
+    }
+    p {
+      margin: 1rem 0;
+    }
+    ul {
+      padding-left: 1.25rem;
+      margin: 1rem 0;
+    }
+    li {
+      margin: 0.5rem 0;
+    }
+    a {
+      color: #0b7285;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.95rem;
+      color: #52606d;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bro Bruh Brah Support</h1>
+    <p>This page provides help resources and contact details for Bro Bruh Brah players.</p>
+    <nav aria-label="Site navigation">
+      <a href="index.html">Privacy Policy</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="contact-support">
+      <h2 id="contact-support">Contact Support</h2>
+      <p>If you run into issues, have questions, or want to share feedback, reach out and we&rsquo;ll get back within two business days.</p>
+      <p><strong>Email:</strong> <a href="mailto:ericso0303@gmail.com">ericso0303@gmail.com</a></p>
+      <p>Include the following in your message to help us resolve things quickly:</p>
+      <ul>
+        <li>Your device model (for example, iPhone 15, iPad Pro)</li>
+        <li>The operating system version (for example, iOS 18.2)</li>
+        <li>The Bro Bruh Brah app version listed in Settings &gt; About</li>
+        <li>A short description of the issue, bug, or request</li>
+        <li>Any screenshots or screen recordings that illustrate the problem</li>
+      </ul>
+      <p>Email is our primary support channel today. If other contact options become available, we will update this page.</p>
+    </section>
+
+    <section aria-labelledby="self-help">
+      <h2 id="self-help">Quick Self-Help Tips</h2>
+      <p>Try these steps for the most common issues before reaching out:</p>
+      <ul>
+        <li>Force close and reopen the app to refresh your session.</li>
+        <li>Check the App Store for updates so you&rsquo;re on the latest version.</li>
+        <li>Restart your device if the app freezes or crashes.</li>
+        <li>Reset gameplay preferences from within the app if available.</li>
+        <li>Reinstall the app to clear local data if everything else fails.</li>
+      </ul>
+      <p>We appreciate any follow-up letting us know whether these tips worked for you.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Eric So. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
